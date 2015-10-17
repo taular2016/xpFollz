@@ -1,0 +1,27 @@
+{
+  "name": "examTaular2016-Aug222015",
+  "version": "1.0.0",
+  "description": "class exam",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "~4.9.x"
+  },
+  "engines": {
+    "node": "0.12.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lordvkrum/examTaular2016-Aug222015"
+  },
+  "keywords": [
+    "class",
+    "exam",
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Exam Taular2016 Aug222015",
+  "description": "class exam",
+  "repository": "https://github.com/lordvkrum/examTaular2016-Aug222015",
+  "keywords": ["class", "exam", "node", "express", "static"],
+  "image": "heroku/nodejs"
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Examn</title>
+	<link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.18.0.css">
+	<script src="//code.jquery.com/qunit/qunit-1.18.0.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="test.js"></script>
+	<style type="text/css">
+		html, body {
+			margin: 0;
+		}
+		body {
+			padding: 0 10px;
+		}
+		.exam, .results {
+			position: absolute;
+			width: 50%;
+			top: 0;
+			bottom: 0;
+			overflow: auto;
+		}
+		.results {
+			left: 50%;
+		}
+		.exercise {
+			font-family: helvetica;
+		}
+		.excercise pre {
+			padding: 5px;
+    		background-color: #ccc;
+		}
+		.exercise textarea {
+			width: 90%;
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="exam">
+		<div class="exercise">
+			<div class="title">
+				<h4>0A. Hola mundo!</h4>
+			</div>
+			<div class="content">
+				<p>Example:</p>
+				<pre>> code0A()<br>  "Hola mundo!"</pre>
+				<textarea id="code0A"></textarea>
+				<br>
+				<button id="run0A">Run</button>
+			</div>
+		</div>
+		<div class="exercise">
+			<div class="title">
+				<h4>0B. Error!</h4>
+			</div>
+			<div class="content">
+				<p>Example:</p>
+				<pre>> code0B()<br>  "Correcto!"</pre>
+				<textarea id="code0B"></textarea>
+				<br>
+				<button id="run0B">Run</button>
+			</div>
+		</div>
+		<div class="exercise">
+			<div class="title">
+				<h4>1. Elevar los elementos de un arreglo a una potencia n</h4>
+			</div>
+			<div class="content">
+				<p>Example:</p>
+				<pre>> code01([1,2,3,4], 2)<br>  [1,4,9,16]</pre>
+				<textarea id="code01"></textarea>
+				<br>
+				<button id="run01">Run</button>
+			</div>
+		</div>
+		<div class="exercise">
+			<div class="title">
+				<h4>2. Revertir los elementos de un arreglo</h4>
+			</div>
+			<div class="content">
+				<p>Example:</p>
+				<pre>> code02([1,2,3,4])<br>  [4,3,2,1]</pre>
+				<textarea id="code02"></textarea>
+				<br>
+				<button id="run02">Run</button>
+			</div>
+		</div>
+		<div class="exercise">
+			<div class="title">
+				<h4>3. Encontrar mínimo valor en un arreglo de números</h4>
+			</div>
+			<div class="content">
+				<p>Example:</p>
+				<pre>> code03([1,2,3,4])<br>  1</pre>
+				<textarea id="code03"></textarea>
+				<br>
+				<button id="run03">Run</button>
+			</div>
+		</div>
+		<div class="exercise">
+			<div class="title">
+				<h4>4. Imprimir en espiral los elementos de una matriz cuadrada</h4>
+			</div>
+			<div class="content">
+				<p>Example:</p>
+				<pre>> code04([<br>    [1,2,3],<br>    [8,9,4],<br>    [7,6,5]<br>  ])<br>  1 2 3 4 5 6 7 8 9</pre>
+				<textarea id="code04"></textarea>
+				<br>
+				<button id="run04">Run</button>
+			</div>
+		</div>
+		<div class="exercise">
+			<div class="title">
+				<h4>5. Imprimir el n-ésimo nivel del triángulo de pascal</h4>
+			</div>
+			<div class="content">
+				<p>Example:</p>
+				<img src="pascals-triangle.gif">
+				<pre>> code05(4)<br>  1 4 6 4 1</pre>
+				<textarea id="code05"></textarea>
+				<br>
+				<button id="run05">Run</button>
+			</div>
+		</div>
+	</div>
+	<div class="results">
+		<div id="qunit"></div>
+		<div id="qunit-fixture"></div>
+	</div>
+</body>
+</html>
