@@ -1,14 +1,15 @@
-# examTaular2016-Aug222015
+# Class Aug 8 2015
+web page example in class
 
-## Running Locally
-
-Make sure you have [Node.js](http://nodejs.org/) installed.
-
-```sh
-$ git clone https://github.com/lordvkrum/examTaular2016-Aug222015.git # or clone your own fork
-$ cd examTaular2016-Aug222015
-$ npm install
-$ npm start
+# Installation
+To install this project, write the following command:
+```
+npm install
 ```
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+# How to use
+To start this project, write the following command:
+```
+node server.js
+```
+Then go to localhost:3000 to see the web page.

@@ -1,27 +1,29 @@
 {
-  "name": "examTaular2016-Aug222015",
+  "name": "classaug82015",
   "version": "1.0.0",
-  "description": "class exam",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
+  "description": "web page example in class",
+  "main": "server.js",
   "dependencies": {
-    "express": "~4.9.x"
+    "express": "^4.13.3"
   },
-  "engines": {
-    "node": "0.12.2"
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lordvkrum/examTaular2016-Aug222015"
+    "url": "git+https://github.com/taular2016/classAug82015.git"
   },
   "keywords": [
     "class",
-    "exam",
-    "node",
-    "heroku",
-    "express"
+    "HTML",
+    "CSS"
   ],
-  "license": "MIT"
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taular2016/classAug82015/issues"
+  },
+  "homepage": "https://github.com/taular2016/classAug82015#readme"
 }

@@ -1,133 +1,146 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Examn</title>
-	<link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.18.0.css">
-	<script src="//code.jquery.com/qunit/qunit-1.18.0.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="test.js"></script>
-	<style type="text/css">
-		html, body {
-			margin: 0;
-		}
+	<title>Mapa mundial</title>
+	<style>
 		body {
-			padding: 0 10px;
+		    font-family: "helvetica";
 		}
-		.exam, .results {
-			position: absolute;
-			width: 50%;
-			top: 0;
-			bottom: 0;
-			overflow: auto;
+
+		h1 {
+		    color: #FF9900;
+		    text-align: center;
 		}
-		.results {
-			left: 50%;
+
+		h2 {
+			color: #FFCC00;
 		}
-		.exercise {
-			font-family: helvetica;
+
+		.place-box {
+			clear: both;
 		}
-		.excercise pre {
-			padding: 5px;
-    		background-color: #ccc;
+
+		.place-box img {
+			float: left;
+			padding: 20px;
+		    background-color: #ffe57f;
+		    border: 5px #ff6f00 dotted;
+		    margin: 20px;
 		}
-		.exercise textarea {
-			width: 90%;
-			height: 100px;
+
+		.place-box.right img{
+			float: right;
+		}
+
+		p {
+			font-family: "Times New Roman";
+		}
+
+		a {
+			text-decoration: none;
+			color: black;
+		}
+
+		a:visited {
+			color: #FF9900;
 		}
 	</style>
+	<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
 </head>
 <body>
-	<div class="exam">
-		<div class="exercise">
-			<div class="title">
-				<h4>0A. Hola mundo!</h4>
-			</div>
-			<div class="content">
-				<p>Example:</p>
-				<pre>> code0A()<br>  "Hola mundo!"</pre>
-				<textarea id="code0A"></textarea>
-				<br>
-				<button id="run0A">Run</button>
-			</div>
-		</div>
-		<div class="exercise">
-			<div class="title">
-				<h4>0B. Error!</h4>
-			</div>
-			<div class="content">
-				<p>Example:</p>
-				<pre>> code0B()<br>  "Correcto!"</pre>
-				<textarea id="code0B"></textarea>
-				<br>
-				<button id="run0B">Run</button>
-			</div>
-		</div>
-		<div class="exercise">
-			<div class="title">
-				<h4>1. Elevar los elementos de un arreglo a una potencia n</h4>
-			</div>
-			<div class="content">
-				<p>Example:</p>
-				<pre>> code01([1,2,3,4], 2)<br>  [1,4,9,16]</pre>
-				<textarea id="code01"></textarea>
-				<br>
-				<button id="run01">Run</button>
-			</div>
-		</div>
-		<div class="exercise">
-			<div class="title">
-				<h4>2. Revertir los elementos de un arreglo</h4>
-			</div>
-			<div class="content">
-				<p>Example:</p>
-				<pre>> code02([1,2,3,4])<br>  [4,3,2,1]</pre>
-				<textarea id="code02"></textarea>
-				<br>
-				<button id="run02">Run</button>
-			</div>
-		</div>
-		<div class="exercise">
-			<div class="title">
-				<h4>3. Encontrar mínimo valor en un arreglo de números</h4>
-			</div>
-			<div class="content">
-				<p>Example:</p>
-				<pre>> code03([1,2,3,4])<br>  1</pre>
-				<textarea id="code03"></textarea>
-				<br>
-				<button id="run03">Run</button>
-			</div>
-		</div>
-		<div class="exercise">
-			<div class="title">
-				<h4>4. Imprimir en espiral los elementos de una matriz cuadrada</h4>
-			</div>
-			<div class="content">
-				<p>Example:</p>
-				<pre>> code04([<br>    [1,2,3],<br>    [8,9,4],<br>    [7,6,5]<br>  ])<br>  1 2 3 4 5 6 7 8 9</pre>
-				<textarea id="code04"></textarea>
-				<br>
-				<button id="run04">Run</button>
-			</div>
-		</div>
-		<div class="exercise">
-			<div class="title">
-				<h4>5. Imprimir el n-ésimo nivel del triángulo de pascal</h4>
-			</div>
-			<div class="content">
-				<p>Example:</p>
-				<img src="pascals-triangle.gif">
-				<pre>> code05(4)<br>  1 4 6 4 1</pre>
-				<textarea id="code05"></textarea>
-				<br>
-				<button id="run05">Run</button>
-			</div>
-		</div>
+	<h1 id="mapa">Mapa Mundial</h1>
+	<img id="mapa-img" src="img/map.png" alt="mapa mundial" usemap="#map">
+	<map name="map">
+		<area coords="205,150,10" shape="circle" alt="great canyon" href="#canyon"></area>
+		<area coords="513,120,10" shape="circle" alt="paris" href="#paris"></area>
+		<area coords="550,137,10" shape="circle" alt="roma" href="#roma"></area>
+		<area coords="540,190,20" shape="circle" alt="sahara" href="#sahara"></area>
+		<area coords="907,150,10" shape="circle" alt="fuji" href="#fuji"></area>
+		<area coords="817,140,10" shape="circle" alt="china" href="#china"></area>
+		<area coords="657,95,10" shape="circle" alt="mosku" href="#mosku"></area>
+		<area coords="265,210,10" shape="circle" alt="roatan" href="#roatan"></area>
+	</map>
+	<h1>Lugares</h1>
+	<div class="place-box">
+		<h2 id="canyon">Great Canyon <a href="#mapa">Ir a mapa</a></h2>
+		<img src="img/canyon.jpg">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	</div>
-	<div class="results">
-		<div id="qunit"></div>
-		<div id="qunit-fixture"></div>
+	<div class="place-box right">
+		<h2 id="paris">Paris <a href="#mapa">Ir a mapa</a></h2>
+		<img src="img/paris.jpg">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+	<div class="place-box">
+		<h2 id="roma">Roma <a href="#mapa">Ir a mapa</a></h2>
+		<img src="img/roma.jpg">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+	<div class="place-box right">
+		<h2 id="sahara">Sahara <a href="#mapa">Ir a mapa</a></h2>
+		<img src="img/sahara.jpg">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+	<div class="place-box">
+		<h2 id="fuji">Fuji <a href="#mapa">Ir a mapa</a></h2>
+		<img src="img/fuji.jpg">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+	<div class="place-box right">
+		<h2 id="china">China <a href="#mapa">Ir a mapa</a></h2>
+		<img src="img/china.jpg">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+	<div class="place-box">
+		<h2 id="mosku">Mosku <a href="#mapa">Ir a mapa</a></h2>
+		<img src="img/mosku.jpg">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+	<div class="place-box right">
+		<h2 id="roatan">Roatan <a href="#mapa">Ir a mapa</a></h2>
+		<img src="img/roatan.jpg">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	</div>
 </body>
 </html>
