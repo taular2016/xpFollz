@@ -1,5 +1,4 @@
-# Class Aug 8 2015
-web page example in class
+# A video game class project
 
 # Installation
 To install this project, write the following command:
