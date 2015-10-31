@@ -11,3 +11,6 @@ v1
 
 v2
 - mousedown: deeper color, more time to remove
+
+v3
+- new game mode: dig to place circles!!

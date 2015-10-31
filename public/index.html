@@ -1,146 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Mapa mundial</title>
-	<style>
-		body {
-		    font-family: "helvetica";
-		}
-
-		h1 {
-		    color: #FF9900;
-		    text-align: center;
-		}
-
-		h2 {
-			color: #FFCC00;
-		}
-
-		.place-box {
-			clear: both;
-		}
-
-		.place-box img {
-			float: left;
-			padding: 20px;
-		    background-color: #ffe57f;
-		    border: 5px #ff6f00 dotted;
-		    margin: 20px;
-		}
-
-		.place-box.right img{
-			float: right;
-		}
-
-		p {
-			font-family: "Times New Roman";
-		}
-
-		a {
-			text-decoration: none;
-			color: black;
-		}
-
-		a:visited {
-			color: #FF9900;
-		}
-	</style>
+	<title>xpFollz</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="app.js"></script>
 </head>
 <body>
-	<h1 id="mapa">Mapa Mundial</h1>
-	<img id="mapa-img" src="img/map.png" alt="mapa mundial" usemap="#map">
-	<map name="map">
-		<area coords="205,150,10" shape="circle" alt="great canyon" href="#canyon"></area>
-		<area coords="513,120,10" shape="circle" alt="paris" href="#paris"></area>
-		<area coords="550,137,10" shape="circle" alt="roma" href="#roma"></area>
-		<area coords="540,190,20" shape="circle" alt="sahara" href="#sahara"></area>
-		<area coords="907,150,10" shape="circle" alt="fuji" href="#fuji"></area>
-		<area coords="817,140,10" shape="circle" alt="china" href="#china"></area>
-		<area coords="657,95,10" shape="circle" alt="mosku" href="#mosku"></area>
-		<area coords="265,210,10" shape="circle" alt="roatan" href="#roatan"></area>
-	</map>
-	<h1>Lugares</h1>
-	<div class="place-box">
-		<h2 id="canyon">Great Canyon <a href="#mapa">Ir a mapa</a></h2>
-		<img src="img/canyon.jpg">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
-	<div class="place-box right">
-		<h2 id="paris">Paris <a href="#mapa">Ir a mapa</a></h2>
-		<img src="img/paris.jpg">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
-	<div class="place-box">
-		<h2 id="roma">Roma <a href="#mapa">Ir a mapa</a></h2>
-		<img src="img/roma.jpg">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
-	<div class="place-box right">
-		<h2 id="sahara">Sahara <a href="#mapa">Ir a mapa</a></h2>
-		<img src="img/sahara.jpg">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
-	<div class="place-box">
-		<h2 id="fuji">Fuji <a href="#mapa">Ir a mapa</a></h2>
-		<img src="img/fuji.jpg">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
-	<div class="place-box right">
-		<h2 id="china">China <a href="#mapa">Ir a mapa</a></h2>
-		<img src="img/china.jpg">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
-	<div class="place-box">
-		<h2 id="mosku">Mosku <a href="#mapa">Ir a mapa</a></h2>
-		<img src="img/mosku.jpg">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
-	<div class="place-box right">
-		<h2 id="roatan">Roatan <a href="#mapa">Ir a mapa</a></h2>
-		<img src="img/roatan.jpg">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<div class="board"></div>
+	<div class="side">
+		<div class="timer">0:00</div>
+		<div class="players"></div>
 	</div>
 </body>
 </html>
