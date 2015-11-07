@@ -6,6 +6,17 @@
                 <input value="" id="user" type="text" class="validate">
                 <label class="active" for="user">Username:</label>
             </div>
+            <div class="input-field col s6">
+                <div id="color-selected"></div>
+                <a id="color-select" class="dropdown-button btn" href="" data-activates="color">Color</a>
+                <ul id="color" class="dropdown-content">
+                    <li style="background-color:#f44336;color:white;">red</li>
+                    <li style="background-color:#9c27b0;color:white;">purple</li>
+                    <li style="background-color:#2196f3;color:white;">blue</li>
+                    <li style="background-color:#4caf50;color:white;">green</li>
+                    <li style="background-color:#ffc107;color:white;">amber</li>
+                </ul>
+            </div>
         </div>
         <div class="progress">
             <div class="indeterminate"></div>
@@ -15,7 +26,9 @@
         <a href="#!" class="start-game-action modal-action waves-effect waves-green btn-flat">Start</a>
     </div>
 </div>
-<div class="board"></div>
+<div class="board-container">
+    <div class="board"></div>
+</div>
 <div class="side">
     <div class="timer">00:00</div>
     <ul class="collection players">

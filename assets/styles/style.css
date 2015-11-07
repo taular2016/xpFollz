@@ -4,12 +4,21 @@ body {
 	overflow: hidden;
 }
 
-.board {
+.board-container {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 80%;
 	height: 100%;
+	overflow: auto;
+	background-color: #F2F2F2;
+}
+
+.board {
+	width: 1000px;
+	height: 1000px;
+	background-color: white;
+	overflow: hidden;
 }
 
 .side {
@@ -32,7 +41,6 @@ body {
 
 .circle {
 	position: absolute;
-	border: 1px solid blue;
 	border-radius: 50%;
 	width: 30px;
 	height: 30px;
@@ -40,4 +48,12 @@ body {
 	color: white;
 	text-align: center;
 	font-weight: bold;
+}
+
+#color-selected {
+	width: 36px;
+    height: 36px;
+    right: 20px;
+    border: 1px solid black;
+    position: absolute;
 }

@@ -1,5 +1,9 @@
 $(document).on('ready', function() {
 	var modal = $('.modal');
+	var colorPicker = $('#color');
+	var colorSelect = $('#color-select');
+	var colorSelected = $('#color-selected');
+	var boardContainer = $('.board-container');
 	var board = $('.board');
 	var timer = $('.timer');
 	var players = $('.players');
@@ -7,6 +11,9 @@ $(document).on('ready', function() {
 	var loader = $('.progress');
 	var startGameButton = $('.start-game-action');
 	var onGame = false;
+	var isColorSelected = false;
+	var playerId;
+	var playerColor;
 	// CIRCLE FUNCTIONS
 	var radius = 15;
 	var centersCircles = [];
@@ -14,12 +21,51 @@ $(document).on('ready', function() {
 		var distance = Math.sqrt(Math.pow((p1.x - p2.x), 2) + Math.pow((p1.y - p2.y), 2));
 		return distance;
 	};
+	var drawCirle = function(circle) {
+		var center = {
+			x: circle.x,
+			y: circle.y
+		};
+		var circleHTML = $('<div>');
+		circleHTML.css({
+			top: circle.y - radius,
+			left: circle.x - radius
+		});
+		circleHTML.data('playerId', circle.playerId);
+		circleHTML.data('id', circle.id, true);
+		circleHTML[0].dataset.id = circle.id;
+		circleHTML.addClass('circle');
+		circleHTML.css('background-color', circle.color);
+		board.append(circleHTML);
+		centersCircles.push(center);
+	};
+	var startCircleRemoveTimer = function(circle) {
+		var circleHTML = board.find('[data-id=' + circle.id + ']');
+		var removeTimeLimit = 5;
+		circleHTML.text(removeTimeLimit);
+		var removeTimerInterval = setInterval(function() {
+			removeTimeLimit--;
+			circleHTML.text(removeTimeLimit);
+			if (removeTimeLimit === 0) {
+				var index = circleHTML.index();
+				centersCircles.splice(index, 1);
+				circleHTML.remove();
+				$.ajax({
+					url: '/circle/' + circleHTML.data('id'),
+					method: 'DELETE'
+				}).success(function(circle) {}).error(function() {
+					alert('There was an error trying to remove circle.');
+				});
+				clearInterval(removeTimerInterval);
+			}
+		}, 1000);
+	};
 	var addCircle = function(event) {
 		if (!onGame) {
 			return;
 		}
-		var x = event.clientX;
-		var y = event.clientY;
+		var x = event.clientX + boardContainer.scrollLeft();
+		var y = event.clientY + boardContainer.scrollTop();
 		var canAddToBoard = true;
 		var center = {
 			x: x,
@@ -33,15 +79,21 @@ $(document).on('ready', function() {
 			}
 		}
 		if (canAddToBoard) {
-			var circle = $('<div>');
-			circle.css({
-				top: y - radius,
-				left: x - radius
+			$.ajax({
+				url: '/circle',
+				method: 'POST',
+				data: {
+					x: x,
+					y: y,
+					playerId: playerId,
+					color: playerColor
+						// COMMENT: add how many circles
+				}
+			}).success(function(circle) {
+				drawCirle(circle);
+			}).error(function() {
+				alert('There was an error trying to add circle.');
 			});
-			circle.addClass('circle');
-			circle.addClass('blue');
-			board.append(circle);
-			centersCircles.push(center);
 		}
 	};
 	var removeCircle = function(event) {
@@ -51,19 +103,21 @@ $(document).on('ready', function() {
 		event.preventDefault();
 		event.cancelBubble = false;
 		event.stopPropagation();
-		var circle = $(this);
-		var removeTimeLimit = 5;
-		circle.text(removeTimeLimit);
-		var removeTimerInterval = setInterval(function() {
-			removeTimeLimit--;
-			circle.text(removeTimeLimit);
-			if (removeTimeLimit === 0) {
-				var index = circle.index();
-				centersCircles.splice(index, 1);
-				circle.remove();
-				clearInterval(removeTimerInterval);
+		var circleHTML = $(this);
+		if (circleHTML.data('playerId') == playerId) {
+			return;
+		}
+		$.ajax({
+			url: '/circle/startRemoveTimer',
+			method: 'POST',
+			data: {
+				id: circleHTML.data('id')
 			}
-		}, 1000);
+		}).success(function(circle) {
+			startCircleRemoveTimer(circle);
+		}).error(function() {
+			alert('There was an error trying to remove circle.');
+		});
 	};
 	// TIMER FUNCTIONS
 	var formatTime = function(time) {
@@ -93,18 +147,43 @@ $(document).on('ready', function() {
 		}, 1000);
 	};
 	// START GAME FUNCTIONS
+	var addPlayer = function(player) {
+		var li = $('<li>');
+		li.addClass('collection-item');
+		li.css('color', player.color);
+		li.text(player.name);
+		players.append(li);
+	};
 	var startGame = function() {
 		onGame = true;
 		modal.closeModal();
 		getPlayers();
+		getCircles();
 		setTimer();
-		io.socket.post('/user/subscribePlayerList', function() {
+		io.socket.post('/user/subscribeGame', function() {
 			io.socket.on('new-player', function(user) {
-				var li = $('<li>');
-				li.addClass('collection-item');
-				li.text(user.name);
-				players.append(li);
+				addPlayer(user);
 			});
+			io.socket.on('add-circle', function(circle) {
+				if (circle.playerId != playerId) {
+					drawCirle(circle);
+				}
+			});
+			io.socket.on('remove-circle', function(circle) {
+				startCircleRemoveTimer(circle);
+			});
+		});
+	};
+	var getCircles = function() {
+		$.ajax({
+			url: '/circle',
+			method: 'GET'
+		}).success(function(response) {
+			for (var i = 0; i < response.length; i++) {
+				drawCirle(response[i]);
+			}
+		}).error(function() {
+			alert('An error has ocurred, please refresh the page.');
 		});
 	};
 	var getPlayers = function() {
@@ -113,30 +192,40 @@ $(document).on('ready', function() {
 			method: 'GET'
 		}).success(function(response) {
 			for (var i = 0; i < response.length; i++) {
-				var li = $('<li>');
-				li.addClass('collection-item');
-				li.text(response[i].name);
-				players.append(li);
+				addPlayer(response[i]);
 			}
 		}).error(function() {
 			alert('An error has ocurred, please refresh the page.');
 		});
 	};
 	var createPlayer = function() {
+		if (!isColorSelected) {
+			alert('You must select a color!');
+			return;
+		}
 		loader.show();
 		$.ajax({
 			url: '/user',
 			method: 'POST',
 			data: {
-				name: user.val()
+				name: user.val(),
+				color: colorSelected.css('background-color')
 			}
-		}).success(function() {
+		}).success(function(response) {
 			loader.hide();
+			playerId = response.id;
+			playerColor = response.color;
 			startGame();
 		}).error(function() {
 			loader.hide();
 			alert('The user name is already in use, please select another one.');
 		});
+	};
+	var selectColor = function(event) {
+		var li = $(this);
+		var color = li.css('background-color');
+		colorSelected.css('background-color', color);
+		isColorSelected = true;
 	};
 	startGameButton.on('click', createPlayer);
 	board.on('click', addCircle);
@@ -145,4 +234,6 @@ $(document).on('ready', function() {
 	modal.openModal({
 		dismissible: false
 	});
+	colorSelect.dropdown();
+	colorPicker.on('click', 'li', selectColor);
 });

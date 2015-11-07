@@ -6,6 +6,10 @@
  */
 
 module.exports = {
-	
+	startRemoveTimer: function(request, response, next) {
+		var circle = request.params.all();
+		sails.io.sockets.in('game').emit('remove-circle', request.params.all());
+		response.json(circle);
+	}
 };
 

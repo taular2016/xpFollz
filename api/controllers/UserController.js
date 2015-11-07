@@ -6,9 +6,10 @@
  */
 
 module.exports = {
-	subscribePlayerList: function(request, response, next) {
+	subscribeGame: function(request, response, next) {
 		var socket = request.socket;
 		socket.join('players');
-		return response.ok('Subscribed to room players!');
+		socket.join('game');
+		return response.ok('Subscribed to rooms players and game!');
 	}
 };

@@ -13,6 +13,10 @@ module.exports = {
       required: true,
       unique: true
     },
+    color: {
+      type: 'string',
+      required: true
+    },
     isActive: {
       type: 'boolean',
       defaultsTo: true
